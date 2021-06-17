@@ -32,6 +32,10 @@ struct	s_mlx
 	void	*sprit3_ptr;
 	void	*sprit4_ptr;
 	char	*img;
+	char	*sprit1;
+	char	*sprit2;
+	char	*sprit3;
+	char	*sprit4;
 	int		size_square;
 	int		width;
 	int		height;

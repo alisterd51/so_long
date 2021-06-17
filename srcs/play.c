@@ -71,7 +71,35 @@ static int	display(t_mlx *mlx)
 	}
 	return (0);
 }
+/*
+static void	print_sprit(t_mlx *mlx, int width, int height)
+{
+	if (get_case(mlx->map, width / 40, height / 40) == '0')
+		((int *)(mlx->img))[height * mlx->width + width] = FONT_COLOR;
+	else if (get_case(mlx->map, width / 40, height / 40) == 'P')
+		((int *)(mlx->img))[height * mlx->width + width] =
+			get_pixel(mlx->sprit1, width % 40, height % 40);
+}
 
+static int	display2(t_mlx *mlx)
+{
+	int		width;
+	int		height;
+
+	width = 0;
+	while (width < mlx->width)
+	{
+		height = 0;
+		while (height < mlx->height)
+		{
+			print_sprit(mlx, width, height);
+			height++;
+		}
+		width++;
+	}
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->img_ptr, 0, 0);
+}
+*/
 static int	keypress(int key, t_mlx *mlx)
 {
 	if (key == A_KEY)
