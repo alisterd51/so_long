@@ -6,7 +6,7 @@
 /*   By: anclarma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 18:27:43 by anclarma          #+#    #+#             */
-/*   Updated: 2021/06/17 17:31:47 by anclarma         ###   ########.fr       */
+/*   Updated: 2021/06/18 21:05:12 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ static int	display(t_mlx *mlx)
 
 static int	keypress(int key, t_mlx *mlx)
 {
+	char	*count;
+
 	if (key == A_KEY)
 		left(mlx);
 	else if (key == D_KEY)
@@ -83,6 +85,10 @@ static int	keypress(int key, t_mlx *mlx)
 		down(mlx);
 	else if (key == ESC_KEY)
 		byebye(mlx);
+	count = ft_itoa(mlx->move_count);
+	write(1, count, ft_strlen(count));
+	free(count);
+	write(1, "\r", 1);
 	return (0);
 }
 
