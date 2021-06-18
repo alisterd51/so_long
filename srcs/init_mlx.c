@@ -28,6 +28,20 @@ static void	init_images(t_mlx *mlx)
 			&(mlx->size_square), &(mlx->size_square));
 }
 
+static void	init_data_images(t_mlx *mlx)
+{
+	mlx->img = mlx_get_data_addr(mlx->img_ptr, &(mlx->bpp), &(mlx->size_line),
+			&(mlx->endian));
+	mlx->sprit1 = mlx_get_data_addr(mlx->sprit1_ptr, &(mlx->bpp),
+			&(mlx->size_square), &(mlx->endian));
+	mlx->sprit2 = mlx_get_data_addr(mlx->sprit2_ptr, &(mlx->bpp),
+			&(mlx->size_square), &(mlx->endian));
+	mlx->sprit3 = mlx_get_data_addr(mlx->sprit3_ptr, &(mlx->bpp),
+			&(mlx->size_square), &(mlx->endian));
+	mlx->sprit4 = mlx_get_data_addr(mlx->sprit4_ptr, &(mlx->bpp),
+			&(mlx->size_square), &(mlx->endian));
+}
+
 int	init_mlx(t_mlx *mlx, t_map *map)
 {
 	mlx->map = map;
@@ -47,7 +61,6 @@ int	init_mlx(t_mlx *mlx, t_map *map)
 	if (!mlx->img_ptr || !mlx->sprit1_ptr || !mlx->sprit2_ptr
 		|| !mlx->sprit3_ptr || !mlx->sprit4_ptr)
 		return (8);
-	mlx->img = mlx_get_data_addr(mlx->img_ptr, &(mlx->bpp), &(mlx->size_line),
-			&(mlx->endian));
+	init_data_images(mlx);
 	return (0);
 }

@@ -31,57 +31,27 @@ static void	set_sea(t_mlx *mlx)
 	}
 }
 
-static void	put_sprit(t_mlx *mlx, int width, int height)
-{
-	if (get_case(mlx->map, width / 40, height / 40) == 'P')
-		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win,
-			mlx->sprit1_ptr, width, height);
-	else if (get_case(mlx->map, width / 40, height / 40) == 'C')
-		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win,
-			mlx->sprit2_ptr, width, height);
-	else if (get_case(mlx->map, width / 40, height / 40) == 'E')
-		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win,
-			mlx->sprit3_ptr, width, height);
-	else if (get_case(mlx->map, width / 40, height / 40) == '1')
-		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win,
-			mlx->sprit4_ptr, width, height);
-}
-
-static int	display(t_mlx *mlx)
-{
-	int		width;
-	int		height;
-	char	*count;
-
-	count = ft_itoa(mlx->move_count);
-	write(1, count, ft_strlen(count));
-	free(count);
-	write(1, "\r", 1);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->img_ptr, 0, 0);
-	width = 0;
-	while (width < mlx->width)
-	{
-		height = 0;
-		while (height < mlx->height)
-		{
-			put_sprit(mlx, width, height);
-			height += 40;
-		}
-		width += 40;
-	}
-	return (0);
-}
-/*
 static void	print_sprit(t_mlx *mlx, int width, int height)
 {
 	if (get_case(mlx->map, width / 40, height / 40) == '0')
 		((int *)(mlx->img))[height * mlx->width + width] = FONT_COLOR;
 	else if (get_case(mlx->map, width / 40, height / 40) == 'P')
-		((int *)(mlx->img))[height * mlx->width + width] =
-			get_pixel(mlx->sprit1, width % 40, height % 40);
+		((int *)(mlx->img))[height * mlx->width + width]
+			= ((int *)(mlx->sprit1))[height % 40 * 40 + width % 40];
+	else if (get_case(mlx->map, width / 40, height / 40) == 'C')
+		((int *)(mlx->img))[height * mlx->width + width]
+			= ((int *)(mlx->sprit2))[height % 40 * 40 + width % 40];
+	else if (get_case(mlx->map, width / 40, height / 40) == 'E')
+		((int *)(mlx->img))[height * mlx->width + width]
+			= ((int *)(mlx->sprit3))[height % 40 * 40 + width % 40];
+	else if (get_case(mlx->map, width / 40, height / 40) == '1')
+		((int *)(mlx->img))[height * mlx->width + width]
+			= ((int *)(mlx->sprit4))[height % 40 * 40 + width % 40];
+	if (((int *)(mlx->img))[height * mlx->width + width] == -16777216)
+		((int *)(mlx->img))[height * mlx->width + width] = FONT_COLOR;
 }
 
-static int	display2(t_mlx *mlx)
+static int	display(t_mlx *mlx)
 {
 	int		width;
 	int		height;
@@ -98,8 +68,9 @@ static int	display2(t_mlx *mlx)
 		width++;
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->img_ptr, 0, 0);
+	return (0);
 }
-*/
+
 static int	keypress(int key, t_mlx *mlx)
 {
 	if (key == A_KEY)

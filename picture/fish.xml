@@ -1,7 +1,7 @@
 /* XPM */
 static char *_623775207137[] = {
 /* columns rows colors chars-per-pixel */
-"40 33 149 2 ",
+"40 40 149 2 ",
 "   c #010101",
 ".  c #0D1411",
 "X  c #131816",
@@ -181,6 +181,13 @@ static char *_623775207137[] = {
 "B.B.B.B.B.B.B.B.B.B.B.B.B.B.c 3.a.q.s.f.g.h.S B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
 "B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.V >.g.g.g.3.) , B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
 "B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.$ z z z 9 B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
+"B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
+"B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
+"B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
+"B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
+"B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
+"B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
+"B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
 "B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
 "B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",
 "B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.",

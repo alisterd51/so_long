@@ -41,7 +41,7 @@
 #  define S_KEY		115
 #  define D_KEY		100
 #  define ESC_KEY	65307
-#  define FONT_COLOR	0x00000000
+#  define FONT_COLOR	0x000E3B81
 # endif
 
 /*
