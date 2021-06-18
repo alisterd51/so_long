@@ -6,7 +6,7 @@
 /*   By: anclarma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:08:50 by anclarma          #+#    #+#             */
-/*   Updated: 2021/06/12 20:13:43 by anclarma         ###   ########.fr       */
+/*   Updated: 2021/06/18 18:01:08 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ static int	check_map(t_map **map_ptr)
 	}
 	if (!is_in_map('E', *map_ptr) || !is_in_map('C', *map_ptr)
 		|| !is_in_map('P', *map_ptr))
+		return (6);
+	if (check_wall(*map_ptr))
 		return (6);
 	return (0);
 }

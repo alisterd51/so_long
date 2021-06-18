@@ -6,7 +6,7 @@
 /*   By: anclarma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 15:40:15 by anclarma          #+#    #+#             */
-/*   Updated: 2021/06/17 17:32:52 by anclarma         ###   ########.fr       */
+/*   Updated: 2021/06/18 17:57:27 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@
 # define ERR9	"is debug test\n"
 
 # ifdef MACOS
-#  define W_KEY		13
-#  define A_KEY		0
-#  define S_KEY		1
-#  define D_KEY		2
-#  define ESC_KEY	53
+#  define W_KEY			13
+#  define A_KEY			0
+#  define S_KEY			1
+#  define D_KEY			2
+#  define ESC_KEY		53
 #  define FONT_COLOR	0x000E3B81
 # endif
 
 # ifdef LINUX
-#  define W_KEY		119
-#  define A_KEY		97
-#  define S_KEY		115
-#  define D_KEY		100
-#  define ESC_KEY	65307
+#  define W_KEY			119
+#  define A_KEY			97
+#  define S_KEY			115
+#  define D_KEY			100
+#  define ESC_KEY		65307
 #  define FONT_COLOR	0x000E3B81
 # endif
 
@@ -90,5 +90,10 @@ int		map_height(t_map *map);
 char	get_case(t_map *map, int width, int height);
 void	map_clear(t_map **map_ptr);
 int		add_line_to_map(char *line, t_map **map_ptr);
+
+/*
+** check_wall.c
+*/
+int		check_wall(t_map *map);
 
 #endif
