@@ -6,7 +6,7 @@
 #    By: anclarma <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/12 14:10:03 by anclarma          #+#    #+#              #
-#    Updated: 2021/06/18 18:02:00 by anclarma         ###   ########.fr        #
+#    Updated: 2021/06/21 23:31:30 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CFILES		= so_long.c			\
 			  ft_error.c		\
 			  parse.c			\
 			  check_wall.c		\
+			  check_level.c		\
 			  map.c				\
 			  play.c			\
 			  get_next_line.c	\

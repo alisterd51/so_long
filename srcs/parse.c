@@ -6,7 +6,7 @@
 /*   By: anclarma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:08:50 by anclarma          #+#    #+#             */
-/*   Updated: 2021/06/18 18:01:08 by anclarma         ###   ########.fr       */
+/*   Updated: 2021/06/21 23:36:37 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static int	check_map(t_map **map_ptr)
 	t_map	*map;
 	size_t	len_line;
 
+	if (!*map_ptr)
+		return (6);
 	map = *map_ptr;
 	len_line = ft_strlen(map->line);
 	while (map)
@@ -82,6 +84,8 @@ int	parse(t_map **map_ptr, const char *map_file)
 	int		ret_add_line;
 	char	*line;
 
+	if (check_file_ext(map_file, "ber"))
+		return (9);
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 		return (2);

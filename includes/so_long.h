@@ -6,7 +6,7 @@
 /*   By: anclarma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 15:40:15 by anclarma          #+#    #+#             */
-/*   Updated: 2021/06/18 17:57:27 by anclarma         ###   ########.fr       */
+/*   Updated: 2021/06/21 23:36:25 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define ERR6	"invalid map\n"
 # define ERR7	"mlx error\n"
 # define ERR8	"error to read xml file\n"
-# define ERR9	"is debug test\n"
+# define ERR9	"ext file error\n"
 
 # ifdef MACOS
 #  define W_KEY			13
@@ -95,5 +95,10 @@ int		add_line_to_map(char *line, t_map **map_ptr);
 ** check_wall.c
 */
 int		check_wall(t_map *map);
+
+/*
+** check_level.c
+*/
+int		check_file_ext(const char *filename, const char *ext);
 
 #endif
