@@ -6,7 +6,7 @@
 /*   By: anclarma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:08:50 by anclarma          #+#    #+#             */
-/*   Updated: 2021/06/21 23:36:37 by anclarma         ###   ########.fr       */
+/*   Updated: 2021/06/24 21:46:34 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,26 @@ static int	is_in_map(char c, t_map *map)
 	return (0);
 }
 
-static int	is_charset(char c)
+static int	one_player_in_map(t_map *map)
 {
-	return (c == '0' || c == '1' || c == 'C' || c == 'P' || c == 'E');
+	char	*line;
+	int		nb_player;
+
+	nb_player = 0;
+	while (map)
+	{
+		line = map->line;
+		while (*line)
+		{
+			if (line && *line == 'P')
+				nb_player++;
+			line++;
+		}
+		map = map->next;
+	}
+	if (nb_player == 1)
+		return (1);
+	return (0);
 }
 
 static int	check_line(char *line)
@@ -45,7 +62,7 @@ static int	check_line(char *line)
 		return (1);
 	while (*line && *(line + 1))
 	{
-		if (!is_charset(*line))
+		if (!ft_ischarset(*line))
 			return (1);
 		line++;
 	}
@@ -70,7 +87,7 @@ static int	check_map(t_map **map_ptr)
 		map = map->next;
 	}
 	if (!is_in_map('E', *map_ptr) || !is_in_map('C', *map_ptr)
-		|| !is_in_map('P', *map_ptr))
+		|| !is_in_map('P', *map_ptr) || !one_player_in_map(*map_ptr))
 		return (6);
 	if (check_wall(*map_ptr))
 		return (6);
@@ -80,28 +97,16 @@ static int	check_map(t_map **map_ptr)
 int	parse(t_map **map_ptr, const char *map_file)
 {
 	int		fd;
-	int		ret_gnl;
-	int		ret_add_line;
-	char	*line;
+	int		ret_read_map;
 
 	if (check_file_ext(map_file, "ber"))
 		return (9);
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 		return (2);
-	line = NULL;
-	ret_gnl = get_next_line(fd, &line);
-	ret_add_line = 0;
-	while (ret_gnl > 0 && !ret_add_line)
-	{
-		ret_add_line = add_line_to_map(line, map_ptr);
-		line = NULL;
-		ret_gnl = get_next_line(fd, &line);
-	}
-	if (ret_gnl < 0)
-		return (3);
-	if (ret_add_line)
-		return (4);
+	ret_read_map = read_map(fd, map_ptr);
+	if (ret_read_map)
+		return (ret_read_map);
 	if (close(fd))
 		return (5);
 	return (check_map(map_ptr));

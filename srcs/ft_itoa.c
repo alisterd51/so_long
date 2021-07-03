@@ -43,7 +43,7 @@ char	*ft_itoa(long long int n)
 	else
 		sign = 1;
 	size = itoa_len(n);
-	nb = malloc(sizeof(char) * (size + 1));
+	nb = (char *)malloc(sizeof(char) * (size + 1));
 	if (!nb)
 		return (NULL);
 	nbtmp = (long long int)n * sign;

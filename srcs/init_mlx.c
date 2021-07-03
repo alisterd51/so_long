@@ -6,7 +6,7 @@
 /*   By: anclarma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:12:16 by anclarma          #+#    #+#             */
-/*   Updated: 2021/06/17 17:39:24 by anclarma         ###   ########.fr       */
+/*   Updated: 2021/07/03 12:45:10 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,60 @@
 #include "so_long.h"
 #include "mlx.h"
 
-static void	init_images(t_mlx *mlx)
+static int	init_images(t_mlx *mlx)
 {
-	mlx->img_ptr = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
-	mlx->sprit1_ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "picture/penguin.xml",
-			&(mlx->size_square), &(mlx->size_square));
-	mlx->sprit2_ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "picture/fish.xml",
-			&(mlx->size_square), &(mlx->size_square));
-	mlx->sprit3_ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "picture/portal.xml",
-			&(mlx->size_square), &(mlx->size_square));
-	mlx->sprit4_ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "picture/wall.xml",
-			&(mlx->size_square), &(mlx->size_square));
+	int	err;
+
+	err = add_img(mlx);
+	if (!err)
+		err = add_xpm(mlx, 'P', "picture/penguin.xpm");
+	if (!err)
+		err = add_xpm(mlx, 'C', "picture/fish.xpm");
+	if (!err)
+		err = add_xpm(mlx, 'E', "picture/portal.xpm");
+	if (!err)
+		err = add_xpm(mlx, '1', "picture/wall.xpm");
+	return (err);
 }
 
-static void	init_data_images(t_mlx *mlx)
+#ifdef __linux__
+static int	fail_init(t_mlx *mlx, int err)
 {
-	mlx->img = mlx_get_data_addr(mlx->img_ptr, &(mlx->bpp), &(mlx->size_line),
-			&(mlx->endian));
-	mlx->sprit1 = mlx_get_data_addr(mlx->sprit1_ptr, &(mlx->bpp),
-			&(mlx->size_square), &(mlx->endian));
-	mlx->sprit2 = mlx_get_data_addr(mlx->sprit2_ptr, &(mlx->bpp),
-			&(mlx->size_square), &(mlx->endian));
-	mlx->sprit3 = mlx_get_data_addr(mlx->sprit3_ptr, &(mlx->bpp),
-			&(mlx->size_square), &(mlx->endian));
-	mlx->sprit4 = mlx_get_data_addr(mlx->sprit4_ptr, &(mlx->bpp),
-			&(mlx->size_square), &(mlx->endian));
+	clean_img_lst(mlx);
+	if (mlx->mlx_win)
+		mlx_destroy_window(mlx->mlx_ptr, mlx->mlx_win);
+	if (mlx->mlx_ptr)
+	{
+		mlx_destroy_display(mlx->mlx_ptr);
+		free(mlx->mlx_ptr);
+	}
+	return (err);
+}
+#endif
+
+#ifdef __MACH__
+static int	fail_init(t_mlx *mlx, int err)
+{
+	clean_img_lst(mlx);
+	if (mlx->mlx_win)
+		mlx_destroy_window(mlx->mlx_ptr, mlx->mlx_win);
+	if (mlx->mlx_ptr)
+		free(mlx->mlx_ptr);
+	return (err);
+}
+#endif
+
+static void	pre_init_mlx(t_mlx *mlx)
+{
+	mlx->map = NULL;
+	mlx->mlx_ptr = NULL;
+	mlx->mlx_win = NULL;
+	mlx->img = NULL;
 }
 
 int	init_mlx(t_mlx *mlx, t_map *map)
 {
+	pre_init_mlx(mlx);
 	mlx->map = map;
 	mlx->size_square = 40;
 	mlx->width = mlx->size_square * map_width(map);
@@ -54,13 +79,10 @@ int	init_mlx(t_mlx *mlx, t_map *map)
 	mlx->mlx_ptr = mlx_init();
 	mlx->move_count = 0;
 	if (mlx->mlx_ptr == NULL)
-		return (7);
+		return (fail_init(mlx, 7));
 	mlx->mlx_win = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height,
 			"so_long");
-	init_images(mlx);
-	if (!mlx->img_ptr || !mlx->sprit1_ptr || !mlx->sprit2_ptr
-		|| !mlx->sprit3_ptr || !mlx->sprit4_ptr)
-		return (8);
-	init_data_images(mlx);
+	if (!mlx->mlx_win || init_images(mlx))
+		return (fail_init(mlx, 8));
 	return (0);
 }

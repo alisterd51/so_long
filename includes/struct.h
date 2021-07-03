@@ -13,6 +13,15 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
+typedef struct s_img	t_img;
+struct	s_img
+{
+	char	id;
+	void	*img_ptr;
+	char	*img;
+	t_img	*next;
+};
+
 typedef struct s_map	t_map;
 struct	s_map
 {
@@ -20,6 +29,24 @@ struct	s_map
 	t_map	*next;
 };
 
+typedef struct s_mlx	t_mlx;
+struct	s_mlx
+{
+	t_map	*map;
+	void	*mlx_ptr;
+	void	*mlx_win;
+	t_img	*img;
+	int		event;
+	int		size_square;
+	int		width;
+	int		height;
+	int		size_line;
+	int		bpp;
+	int		endian;
+	int		move_count;
+};
+
+/*
 typedef struct s_mlx	t_mlx;
 struct	s_mlx
 {
@@ -36,6 +63,7 @@ struct	s_mlx
 	char	*sprit2;
 	char	*sprit3;
 	char	*sprit4;
+	int		event;
 	int		size_square;
 	int		width;
 	int		height;
@@ -44,5 +72,5 @@ struct	s_mlx
 	int		endian;
 	int		move_count;
 };
-
+*/
 #endif

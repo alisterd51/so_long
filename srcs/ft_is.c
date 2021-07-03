@@ -20,3 +20,8 @@ int	ft_isdigit(int c)
 {
 	return ('0' <= c && c <= '9');
 }
+
+int	ft_ischarset(char c)
+{
+	return (c == '0' || c == '1' || c == 'C' || c == 'P' || c == 'E');
+}

@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anclarma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/12 16:01:02 by anclarma          #+#    #+#             */
-/*   Updated: 2021/06/21 23:36:58 by anclarma         ###   ########.fr       */
+/*   Created: 2021/06/24 21:44:30 by anclarma          #+#    #+#             */
+/*   Updated: 2021/06/24 21:51:15 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "so_long.h"
+#include "struct.h"
 #include "ft.h"
+#include "so_long.h"
 
-/*
- ** pensez a ajouter un msg en fonction d'errno
- */
-
-int	ft_error(int errno)
+int	read_map(int fd, t_map **map_ptr)
 {
-	const char	*err_msg[10] = {ERR0, ERR1, ERR2, ERR3, ERR4, ERR5, ERR6,
-		ERR7, ERR8, ERR9};
+	char	*line;
+	int		ret_gnl;
+	int		ret_add_line;
 
-	write(2, "Error\n", 6);
-	write(2, err_msg[errno], ft_strlen(err_msg[errno]));
-	return (errno);
+	line = NULL;
+	ret_gnl = get_next_line(fd, &line);
+	ret_add_line = 0;
+	while (ret_gnl > 0 && !ret_add_line)
+	{
+		ret_add_line = add_line_to_map(line, map_ptr);
+		line = NULL;
+		ret_gnl = get_next_line(fd, &line);
+	}
+	if (ret_gnl < 0)
+		return (3);
+	if (ret_add_line)
+		return (4);
+	return (0);
 }

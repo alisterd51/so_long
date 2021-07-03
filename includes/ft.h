@@ -6,7 +6,7 @@
 /*   By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:43:04 by anclarma          #+#    #+#             */
-/*   Updated: 2021/06/15 21:13:31 by anclarma         ###   ########.fr       */
+/*   Updated: 2021/07/03 19:00:06 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 */
 int		ft_isspace(int c);
 int		ft_isdigit(int c);
+int		ft_ischarset(char c);
 
 /*
 ** ft_secure_atoi.c
@@ -35,6 +36,11 @@ int		ft_atoi(const char *str);
 ** ft_itoa.c
 */
 char	*ft_itoa(long long int n);
+
+/*
+** ft_putnbr.c
+*/
+void	ft_putnbr(int n);
 
 /*
 ** get_next_line.c
