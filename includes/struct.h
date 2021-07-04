@@ -46,31 +46,4 @@ struct	s_mlx
 	int		move_count;
 };
 
-/*
-typedef struct s_mlx	t_mlx;
-struct	s_mlx
-{
-	t_map	*map;
-	void	*mlx_ptr;
-	void	*mlx_win;
-	void	*img_ptr;
-	void	*sprit1_ptr;
-	void	*sprit2_ptr;
-	void	*sprit3_ptr;
-	void	*sprit4_ptr;
-	char	*img;
-	char	*sprit1;
-	char	*sprit2;
-	char	*sprit3;
-	char	*sprit4;
-	int		event;
-	int		size_square;
-	int		width;
-	int		height;
-	int		size_line;
-	int		bpp;
-	int		endian;
-	int		move_count;
-};
-*/
 #endif
