@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_loop_hook.c                                    :+:      :+:    :+:   */
+/*   mlx_anti_leaks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlie Root <ol@epitech.net>              +#+  +:+       +#+        */
+/*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2000/08/03 11:49:06 by Charlie Root      #+#    #+#             */
-/*   Updated: 2021/11/01 13:39:38 by anclarma         ###   ########.fr       */
+/*   Created: 2021/11/02 19:16:35 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/02 19:17:36 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_int.h"
+#include <stddef.h>
 
-void	mlx_loop_hook(t_xvar *xvar, int (*funct)(), void *param)
+void	**mlx_anti_leaks_00(void)
 {
-	xvar->loop_hook = funct;
-	xvar->loop_param = param;
+	static void	*ptr = NULL;
+
+	return (&ptr);
 }

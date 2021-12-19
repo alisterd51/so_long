@@ -1,25 +1,23 @@
-/*
-** mlx_flush_event.c for MiniLibX in 
-** 
-** Made by Charlie Root
-** Login   <ol@epitech.net>
-** 
-** Started on  Wed Aug  2 18:58:11 2000 Charlie Root
-** Last update Fri Feb 23 17:08:48 2001 Charlie Root
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_flush_event.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Charlie Root <ol@epitech.net>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2000/06/02 18:58:11 by Charlie Root      #+#    #+#             */
+/*   Updated: 2021/10/18 00:54:18 by anclarma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "mlx_int.h"
 
-#include	"mlx_int.h"
-
-
-
-
-int	mlx_flush_event(t_xvar *xvar)
+void	mlx_flush_event(t_xvar *xvar)
 {
-  XEvent	ev;
+	XEvent	ev;
 
-  while (XPending(xvar->display))
-  {
-     XNextEvent(xvar->display,&ev);
-  }
+	while (XPending(xvar->display))
+	{
+		XNextEvent(xvar->display, &ev);
+	}
 }

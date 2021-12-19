@@ -6,7 +6,7 @@
 /*   By: anclarma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 16:52:08 by anclarma          #+#    #+#             */
-/*   Updated: 2021/07/02 23:03:45 by anclarma         ###   ########.fr       */
+/*   Updated: 2021/12/19 19:17:30 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	byebye(t_mlx *mlx)
 	clean_img_lst(mlx);
 	mlx_destroy_window(mlx->mlx_ptr, mlx->mlx_win);
 	mlx_destroy_display(mlx->mlx_ptr);
-	free(mlx->mlx_ptr);
 	map_clear(&mlx->map);
 	exit(0);
 	return (0);

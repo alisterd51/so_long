@@ -1,21 +1,20 @@
-/*
-** mlx_clear_window.c for MiniLibX in 
-** 
-** Made by Charlie Root
-** Login   <ol@epitech.net>
-** 
-** Started on  Thu Sep  7 19:46:15 2000 Charlie Root
-** Last update Tue Sep 25 17:11:19 2001 Charlie Root
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_clear_window.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Charlie Root <ol@epitech.net>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2000/09/07 19:46:15 by Charlie Root      #+#    #+#             */
+/*   Updated: 2021/10/18 00:10:20 by anclarma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "mlx_int.h"
 
-
-#include	"mlx_int.h"
-
-
-int		mlx_clear_window(t_xvar *xvar,t_win_list *win)
+void	mlx_clear_window(t_xvar *xvar, t_win_list *win)
 {
-  XClearWindow(xvar->display,win->window);
-  if (xvar->do_flush)
-    XFlush(xvar->display);
+	XClearWindow(xvar->display, win->window);
+	if (xvar->do_flush)
+		XFlush(xvar->display);
 }

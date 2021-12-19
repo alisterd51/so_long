@@ -1,4 +1,6 @@
-[![Build](https://github.com/42Paris/minilibx-linux/actions/workflows/ci.yml/badge.svg)](https://github.com/42Paris/minilibx-linux/actions/workflows/ci.yml)
+[![Build 42Paris](https://github.com/42Paris/minilibx-linux/actions/workflows/ci.yml/badge.svg)](https://github.com/42Paris/minilibx-linux/actions/workflows/ci.yml)
+[![Build Alisterd51](https://github.com/alisterd51/minilibx-linux/actions/workflows/ci.yml/badge.svg)](https://github.com/alisterd51/minilibx-linux/actions/workflows/ci.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/alisterd51/minilibx-linux/badge)](https://www.codefactor.io/repository/github/alisterd51/minilibx-linux)
 
 This is the MinilibX, a simple X-Window (X11R6) programming API
 in C, designed for students, suitable for X-beginners.
@@ -53,3 +55,9 @@ Install MinilibX
 
 
  Olivier CROUZET - 2014-01-06 -
+
+Refactorisation et passage a la norme v3 en cours
+Nota: il est impossible de mettre le mlx entièrement
+	a la norme v3 car certaines fonctions prennent trop d'arguments
+
+ Antoine CLARMAN - 2021-10-21 -

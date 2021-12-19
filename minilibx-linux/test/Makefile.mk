@@ -3,9 +3,9 @@ INC=%%%%
 
 INCLIB=$(INC)/../lib
 
-CC=gcc
+UNAME := $(shell uname)
 
-CFLAGS= -I$(INC) -O3 -I.. -g
+CFLAGS= -I$(INC) -O3 -I.. -g3 -Wall -Wextra -Werror -pedantic-errors
 
 NAME= mlx-test
 SRC = main.c
@@ -13,11 +13,15 @@ OBJ = $(SRC:%.c=%.o)
 
 LFLAGS = -L.. -lmlx -L$(INCLIB) -lXext -lX11 -lm
 
-UNAME := $(shell uname)
 ifeq ($(UNAME), Darwin)
 	# mac
+	CC = clang
+else ifeq ($(UNAME), FreeBSD)
+	# FreeBSD
+	CC = clang
 else
 	#Linux and others...
+	CC	= gcc
 	LFLAGS += -lbsd
 endif
 

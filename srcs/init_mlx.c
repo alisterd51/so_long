@@ -6,7 +6,7 @@
 /*   By: anclarma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:12:16 by anclarma          #+#    #+#             */
-/*   Updated: 2021/07/03 12:45:10 by anclarma         ###   ########.fr       */
+/*   Updated: 2021/12/19 19:11:12 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ static int	fail_init(t_mlx *mlx, int err)
 
 int	init_mlx(t_mlx *mlx, t_map *map)
 {
-	pre_init_mlx(mlx);
-	*mlx = (t_mlx){.map = map,
+	*mlx = (t_mlx){
+		.map = map,
 		.size_square = 40,
-		.width = .size_square * map_width(map),
-		.height = .size_square * map_height(map),
-		.size_line = .width * sizeof(int),
+		.width = 40 * map_width(map),
+		.height = 40 * map_height(map),
 		.bpp = 32,
 		.endian = 1,
 		.mlx_ptr = mlx_init(),
 		.move_count = 0};
+	mlx->size_line = mlx->width * sizeof(int);
 	if (mlx->mlx_ptr == NULL)
 		return (fail_init(mlx, 7));
 	mlx->mlx_win = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height,

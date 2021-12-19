@@ -1,31 +1,29 @@
-/*
-** mlx_destroy_image.c for MinilibX in 
-** 
-** Made by Charlie Root
-** Login   <ol@epitech.net>
-** 
-** Started on  Tue Mar 12 10:25:15 2002 Charlie Root
-** Last update Tue May 15 16:45:54 2007 Olivier Crouzet
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_destroy_image.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Charlie Root <ol@epitech.net>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2002/03/12 10:25:15 by Charlie Root      #+#    #+#             */
+/*   Updated: 2021/10/18 00:15:40 by anclarma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "mlx_int.h"
 
-#include	"mlx_int.h"
-
-
-int	mlx_destroy_image(t_xvar *xvar, t_img *img)
+void	mlx_destroy_image(t_xvar *xvar, t_img *img)
 {
-  if (img->type == MLX_TYPE_SHM_PIXMAP ||
-      img->type == MLX_TYPE_SHM)
-    {
-      XShmDetach(xvar->display, &(img->shm));
-      shmdt(img->shm.shmaddr);
-      /* shmctl IPC_RMID already done */
-    }
-  XDestroyImage(img->image);  /* For image & shm-image. Also free img->data */
-  XFreePixmap(xvar->display, img->pix);
-  if (img->gc)
-    XFreeGC(xvar->display, img->gc);
-  free(img);
-  if (xvar->do_flush)
-    XFlush(xvar->display);
+	if (img->type == MLX_TYPE_SHM_PIXMAP || img->type == MLX_TYPE_SHM)
+	{
+		XShmDetach(xvar->display, &(img->shm));
+		shmdt(img->shm.shmaddr);
+	}
+	XDestroyImage(img->image);
+	XFreePixmap(xvar->display, img->pix);
+	if (img->gc)
+		XFreeGC(xvar->display, img->gc);
+	free(img);
+	if (xvar->do_flush)
+		XFlush(xvar->display);
 }
