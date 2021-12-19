@@ -6,7 +6,7 @@
 /*   By: anclarma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 17:52:35 by anclarma          #+#    #+#             */
-/*   Updated: 2021/06/13 19:31:03 by anclarma         ###   ########.fr       */
+/*   Updated: 2021/12/19 19:32:25 by anclarma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ int	add_line_to_map(char *line, t_map **map_ptr)
 		*map_ptr = (t_map *)malloc(sizeof(t_map));
 		if (*map_ptr == NULL)
 			return (1);
-		(*map_ptr)->line = line;
-		(*map_ptr)->next = NULL;
+		**map_ptr = (t_map){.line = line};
 	}
 	else
 	{
@@ -75,8 +74,7 @@ int	add_line_to_map(char *line, t_map **map_ptr)
 		ptr->next = (t_map *)malloc(sizeof(t_map));
 		if (ptr->next == NULL)
 			return (1);
-		ptr->next->line = line;
-		ptr->next->next = NULL;
+		*(ptr->next) = (t_map){.line = line};
 	}
 	return (0);
 }
