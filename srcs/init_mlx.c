@@ -58,26 +58,18 @@ static int	fail_init(t_mlx *mlx, int err)
 }
 #endif
 
-static void	pre_init_mlx(t_mlx *mlx)
-{
-	mlx->map = NULL;
-	mlx->mlx_ptr = NULL;
-	mlx->mlx_win = NULL;
-	mlx->img = NULL;
-}
-
 int	init_mlx(t_mlx *mlx, t_map *map)
 {
 	pre_init_mlx(mlx);
-	mlx->map = map;
-	mlx->size_square = 40;
-	mlx->width = mlx->size_square * map_width(map);
-	mlx->height = mlx->size_square * map_height(map);
-	mlx->size_line = mlx->width * 4;
-	mlx->bpp = 32;
-	mlx->endian = 1;
-	mlx->mlx_ptr = mlx_init();
-	mlx->move_count = 0;
+	*mlx = (t_mlx){.map = map,
+		.size_square = 40,
+		.width = .size_square * map_width(map),
+		.height = .size_square * map_height(map),
+		.size_line = .width * sizeof(int),
+		.bpp = 32,
+		.endian = 1,
+		.mlx_ptr = mlx_init(),
+		.move_count = 0};
 	if (mlx->mlx_ptr == NULL)
 		return (fail_init(mlx, 7));
 	mlx->mlx_win = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height,
